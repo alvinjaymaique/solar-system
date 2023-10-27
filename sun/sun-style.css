@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'agencyFB';
+    src: url('../AgencyFB-Bold.ttf') ;
+}
+
+@font-face {
+    font-family: 'tradeGothicReg';
+    src: url('../TradeGothicReg.otf') ;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body{
+    margin:0;
+    padding:0;
+    color:aliceblue;
+    text-align: justify;
+    line-height: 1.5;
+
+    font-family:tradeGothicReg;
+    font-size: 21px;
+}
+
+
+
+.grid-container{
+    display:grid;
+    /* background: linear-gradient(to bottom, rgba(100,100,100), rgba(255,255,255,0.16), rgba(255,255,255,0.13), rgba(255,255,255,0.1)); */
+    height:450vh;
+    width:100vw;   
+    grid-template-columns: 1fr;
+    grid-template-rows: 290px;
+    margin: 0;
+    padding: 0;
+}
+
+.grid{
+    height: 200px;
+    /*border: solid;*/
+}
+
+.grid-item1{
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.grid-item2{
+    /*background-image: url('solarsystemJPEG.jpg'); */ 
+    width: 400px;
+    height: fit-content;
+    background-size:cover;
+    border-bottom-right-radius: 2%;
+    border-bottom-left-radius: 2%;
+    box-shadow: white 0px 5px 20px;
+}
+
+.grid-item3{   
+    /*background-color: aquamarine;*/
+    padding-left: 1em;
+    padding-right: 2em;
+    height: fit-content;
+    grid-column: span 2;
+}
+
+
+
+h1{
+    font-family: agencyFB;
+    font-size: 48px;
+    color:aliceblue;
+}
+
+dt{
+    font-family:tradeGothicReg;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+a{
+    color:rgb(0, 120, 255);
+}
+
+a:active{
+    color:blueviolet;
+}

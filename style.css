@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'agencyFB';
+    src: url('AgencyFB-Bold.ttf') ;
+}
+
+@font-face {
+    font-family: 'tradeGothicReg';
+    src: url('TradeGothicReg.otf') ;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    background-image: url(universe.jpg);
+    background-size: cover;
+
+    overflow-y: hidden;
+}
+
+#section1{
+    display: grid;
+    height: 100vh;
+    grid-template-areas:
+    "head head"
+    "nav main"
+    "nav main";
+    grid-template-columns: 600px auto;
+    grid-template-rows: 100px 1fr;
+}
+
+#section1 > header{
+    /* background-color: red; */
+    grid-area: head;
+    background-color: rgba(100, 100, 100, 0.7);
+    text-align: center;  
+    user-select: none;
+    padding: 10px;
+}
+
+.title{
+    display: grid;
+    /* background-color: aquamarine; */
+    grid-template-columns: 1fr 1fr; 
+
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    font-size: 60px;
+    letter-spacing: 0.3em;
+    color: whitesmoke;
+    text-shadow: 0 0 100px white;
+    /* background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.text-solar, .text-system{
+    transition: background-color 0.5s ease-in-out;
+}
+
+.text-solar{
+    /* background: linear-gradient(to left, rgb(245, 245, 245), rgb(215, 226, 243), rgb(163, 193, 238),  rgb(62, 133, 240), rgb(32, 111, 230), rgb(0, 102, 255)); */  
+    background: linear-gradient(to left, rgb(245, 245, 245), rgb(243, 234, 213), rgb(238, 212, 153),  rgb(235, 181, 57), rgb(233, 171, 28), rgb(255, 179, 0));   
+    background-clip: text;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    justify-self: end;
+    margin-right:10px;
+}
+
+
+.text-system{
+    background: linear-gradient(to right,  rgb(245, 245, 245), rgb(243, 234, 213), rgb(238, 212, 153),  rgb(235, 181, 57), rgb(233, 171, 28), rgb(255, 179, 0));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    justify-self:left;
+    margin-left: 10px;
+}
+
+#section1 > nav{
+    /* background-color: orange; */
+    grid-area: nav;
+    /* background-color: rgba(82, 82, 82, 1); */
+    background: linear-gradient(to bottom, rgb(100, 100, 100), rgb(80, 80, 80), rgb(60, 60, 60));
+    min-width: 600px;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+#section1 > main{
+    /* background-color: yellow; */
+    grid-area: main;
+}
+
+iframe{
+    height: 100%;
+    width: 100%;
+}
+
+.close-info{
+    position:absolute;
+    background-color:white;
+    z-index: 2;
+    top:0;
+
+    background-image: url('img/closeIcon.png');
+    background-size: cover;  
+    background-clip: content-box;
+    height: 25px;
+    width: 25px;
+    margin-top: 2px;
+    margin-left: 2px;
+    top: 100px;
+
+    display: none;
+}
+
+.close-info:hover{
+    cursor:pointer;
+    background-blend-mode: difference; 
+}
+
+.close-info:active{
+    background-blend-mode: normal
+}
+
+.credits{
+    position: absolute;
+    background-color: whitesmoke;
+    border-radius: 2px;
+    box-shadow: white 0 0 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    height: max-content;
+    width: max-content;
+    padding: 10px;
+
+    user-select: none;
+    /* display: none; */
+}
