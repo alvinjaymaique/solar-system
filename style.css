@@ -31,6 +31,7 @@ body{
     grid-template-rows: 100px 1fr;
 }
 
+
 #section1 > header{
     /* background-color: red; */
     grid-area: head;
@@ -146,4 +147,48 @@ iframe{
 
     user-select: none;
     /* display: none; */
+}
+
+
+@media screen and (max-width: 600px) {
+    body{
+        overflow-y: visible;
+    }
+
+    #section1{
+        display: grid;
+        height: 100vh;
+        grid-template-areas:
+        "head"
+        "nav"
+        "main";
+        grid-template-columns: auto;
+        grid-template-rows: 100px 100% 600px;
+    }
+
+    .title{
+        font-family: 'Bebas Neue', sans-serif;
+    }
+
+    #section1 > nav{
+        overflow-y: hidden;
+    }
+
+    .credits{
+        position: relative;
+        background-color: whitesmoke;
+        border-radius: 2px;
+        box-shadow: white 0 0 10px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        height: max-content;
+        width: max-content;
+        padding: 10px;
+    
+        user-select: none;
+        /* display: none; */
+    }
 }

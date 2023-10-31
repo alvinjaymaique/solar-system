@@ -4,16 +4,22 @@ const closeInfo = document.querySelector('.close-info');
 
 const textSolar = document.querySelector('.text-solar');
 const textSystem = document.querySelector('.text-system');
+const section = document.getElementById('section1');
 window.addEventListener('message', function(event){ 
-    if(event.data != '')
+    if(event.data == 'screenTouched')
+    {
+        // this.alert(event.data);
+    }
+    else if(event.data != '')
     {
         infoFilePath = event.data+'/'+event.data+'.html';
         // this.alert(infoFilePath);
         // this.alert(event.data);
         titleColor(event.data);
         frameInfo.src = infoFilePath;
-        closeInfo.style.display = 'block';
-    }   
+        closeInfo.style.display = 'block'; 
+        scrollToTop();    
+    }    
 })
 
 closeInfo.addEventListener('click', () => {
@@ -129,4 +135,9 @@ closeInfo.addEventListener('click', () =>{
     closeInfo.style.display = 'none';
     frameInfo.src = 'cover/cover.html';
 })
+
+function scrollToTop() {
+    document.documentElement.scrollTop = 0; // For modern browsers
+    document.body.scrollTop = 0; // For older browsers
+}
 

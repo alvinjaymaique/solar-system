@@ -140,6 +140,7 @@ planets.forEach(function(planet)
         frameInfoPath = planetName+'/'+planetName+'.html';
         window.parent.postMessage(planetName, '*');
         // closeFrame.style.display = 'block';
+        
     })
 })
 // closeFrame.addEventListener("click", function(){
@@ -171,3 +172,17 @@ planets.forEach((planet) => {
     })
 })
 //4 When planets are hovered the orbit will stop
+
+
+window.addEventListener('touchstart', ()=>{
+    if(isRunning){
+        planets.forEach((planet) => {
+            planet.addEventListener('mouseenter', () => {
+                orbit.forEach((orbitPlanet) => {
+                    orbitPlanet.style.animationPlayState = 'running'; 
+                })
+            })           
+        })
+        // window.parent.postMessage('screenTouched', '*');
+    }    
+})
