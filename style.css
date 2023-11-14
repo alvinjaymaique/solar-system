@@ -201,13 +201,11 @@ iframe{
         font-family: 'Bebas Neue', sans-serif;
     }
 
-    /* #section1 > nav{
-        overflow-y: hidden;
-    } */
     .mainBtn{
         left: 50%;
         top: 0;
         margin-top: -3px;
+        border-left: solid 5px rgba(100, 100, 100, 0.7);
         transform: rotate(90deg);
     }
 
