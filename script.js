@@ -146,36 +146,72 @@ function scrollToTop() {
 const frameSolar = document.getElementById('frameSolar');
 const mainBtn = document.querySelector('.mainBtn');
 var isNavOpen = true;
+var navHeight = frameInfo.style.height;
 mainBtn.addEventListener('click', ()=>{
-    //Transition
-    section.style.transition = 'grid-template-columns 1s, min-width 1s';
-    navi.style.transition = 'min-width 1s';
-    closeInfo.style.transition = 'min-width 1s';
-    frameSolar.style.pointerEvents = 'none';
-    if(isNavOpen)
+    if(window.outerWidth > 600)
     {
-        //Change Style
-        section.style.gridTemplateColumns = '0px auto';
-        navi.style.minWidth = '0px';      
-        closeInfo.style.minWidth = '0px';      
+        //Transition
+        section.style.transition = 'grid-template-columns 1s, min-width 1s';
+        navi.style.transition = 'min-width 1s';
+        closeInfo.style.transition = 'min-width 1s';
+        frameSolar.style.pointerEvents = 'none';
+        if(isNavOpen)
+        {
+            //Change Style
+            section.style.gridTemplateColumns = '0px auto';
+            navi.style.minWidth = '0px';      
+            closeInfo.style.minWidth = '0px';      
+            setTimeout(()=>{
+                mainBtn.style.backgroundImage = "url(img/arrow_forward.svg)";
+            }, 1000)  
+        }
+        else{
+            //Change Style
+            section.style.gridTemplateColumns = '600px auto';
+            navi.style.minWidth = '600px';
+            closeInfo.style.minWidth = '25px';
+            setTimeout(()=>{
+                mainBtn.style.backgroundImage = "url(img/arrow_backward.svg)";
+            }, 1000)      
+        }
+        isNavOpen = !isNavOpen
+        frameSolar.contentWindow.postMessage('mainBtnClicked','*');
         setTimeout(()=>{
-            mainBtn.style.backgroundImage = "url(img/arrow_forward.svg)";
-        }, 1000)  
+            frameSolar.style.pointerEvents = 'auto';
+        }, 1000)
     }
-    else{
-        //Change Style
-        section.style.gridTemplateColumns = '600px auto';
-        navi.style.minWidth = '600px';
-        closeInfo.style.minWidth = '25px';
+    else if(window.outerWidth <= 600){
+        //Transition
+        section.style.transition = 'grid-template-rows 1s, min-height 1s';
+        navi.style.transition = 'min-height 1s';
+        closeInfo.style.transition = 'min-height 1s';
+        frameSolar.style.pointerEvents = 'none';
+        if(isNavOpen)
+        {
+            //Change Style
+            section.style.gridTemplateRows = '100px 0px 600px';
+            navi.style.minWidth = '0px';      
+            closeInfo.style.minHeight = '0px';      
+            setTimeout(()=>{
+                mainBtn.style.backgroundImage = "url(img/arrow_forward.svg)";
+            }, 1000)  
+        }
+        else{
+            //Change Style
+            section.style.gridTemplateRows = '100px 100% 600px';
+            navi.style.minHeight = navHeight;
+            closeInfo.style.minHeight = '25px';
+            setTimeout(()=>{
+                mainBtn.style.backgroundImage = "url(img/arrow_backward.svg)";
+            }, 1000)      
+        }
+        isNavOpen = !isNavOpen
+        frameSolar.contentWindow.postMessage('mainBtnClicked','*');
         setTimeout(()=>{
-            mainBtn.style.backgroundImage = "url(img/arrow_backward.svg)";
-        }, 1000)      
+            frameSolar.style.pointerEvents = 'auto';
+        }, 1000)
     }
-    isNavOpen = !isNavOpen
-    frameSolar.contentWindow.postMessage('mainBtnClicked','*');
-    setTimeout(()=>{
-        frameSolar.style.pointerEvents = 'auto';
-    }, 1000)  
+    
 })
 
 // section.addEventListener('click', ()=>{
