@@ -3,6 +3,9 @@ html, body{
     -webkit-user-drag: none;
 
     overflow: hidden;
+    margin: 0;
+    padding: 0;
+    
 }
 
 #selection-box{
@@ -21,9 +24,10 @@ html, body{
 .btn{
     z-index: 10;
     border-radius: 5px;
-    margin-right: 5px;
+    /* margin-right: 5px;
     margin-bottom: 5px;
-    margin-left: 5px;
+    margin-left: 5px; */
+    margin: 8px;
     flex-shrink: 0;
 }
 

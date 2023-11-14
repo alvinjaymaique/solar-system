@@ -18,7 +18,7 @@ body{
     color:aliceblue;
     text-align: justify;
     line-height: 1.5;
-
+    
     font-family:tradeGothicReg;
     font-size: 21px;
 }
@@ -34,6 +34,7 @@ body{
     grid-template-rows: 300px;
     margin: 0;
     padding: 0;
+    overflow-wrap:break-word;
 }
 
 .grid{
@@ -88,4 +89,17 @@ a{
 
 a:active{
     color:blueviolet;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: gray;
+}
+
+::-webkit-scrollbar-track{
+    background-color: rgba(255, 255, 255, 0.70);
 }

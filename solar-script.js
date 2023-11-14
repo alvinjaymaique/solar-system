@@ -34,7 +34,7 @@ box.addEventListener('mousedown', function(e){
     isMousePress = true;   
     previousClientX = e.clientX;
     previousClientY = e.clientY;  
-    box.style.cursor = 'move';
+    box.style.cursor = 'move';  
 });
 
 box.addEventListener('mouseup', function(){
@@ -54,19 +54,23 @@ box.addEventListener('mouseleave', function(){
     });
 })
 
-const rect = solarS.getBoundingClientRect();
-var x = rect.x, y = rect.y;
+// subtract the y axis by 50
+var rect = solarS.getBoundingClientRect();
+var x = rect.x, y = rect.y-50;
+solarS.style.left = x + 'px';
+solarS.style.top = y + 'px';
 const moveSpeed = 5;
 box.addEventListener('mousemove', function(e){
+    
     if(isMousePress)
     {    
         // document.title = e.clientX - previousClientX;
         if(previousClientX - e.clientX > 0 && x < window.innerWidth*0.8) 
         {           
-            x = x + moveSpeed;          
+            x = x + moveSpeed;       
             solarS.style.left = x + 'px';        
         }
-        if(previousClientX - e.clientX < 0 && x > window.innerWidth*0.2){
+        else if(previousClientX - e.clientX < 0 && x > window.innerWidth*0.2){
             x = x - moveSpeed;          
             solarS.style.left = x + 'px';       
         }
@@ -75,7 +79,7 @@ box.addEventListener('mousemove', function(e){
             y = y + moveSpeed;
             solarS.style.top = y + 'px';           
         }
-        if(previousClientY - e.clientY < 0 && y > window.innerHeight*0.2){
+        else if(previousClientY - e.clientY < 0 && y > window.innerHeight*0.2){
             y = y - moveSpeed;
             solarS.style.top = y + 'px';
         }
@@ -136,20 +140,12 @@ planets.forEach(function(planet)
 {
     planet.addEventListener("click", function(){
         var planetName = planet.classList[1];
-        // frame.src = planetName+'/'+planetName+'.html';
         frameInfoPath = planetName+'/'+planetName+'.html';
-        window.parent.postMessage(planetName, '*');
-        // closeFrame.style.display = 'block';
-        
+        window.parent.postMessage(planetName, '*');      
     })
 })
-// closeFrame.addEventListener("click", function(){
-//     closeFrame.style.display = 'none';
 
-// })
 sun.addEventListener("click", function(){
-    // frame.src = sun.id+'/'+sun.id+'.html';
-    // closeFrame.style.display = 'block';
     window.parent.postMessage('sun', '*');
 })
 //3 Event Handler for planets and sun
@@ -186,3 +182,30 @@ window.addEventListener('touchstart', ()=>{
         // window.parent.postMessage('screenTouched', '*');
     }    
 })
+
+
+window.addEventListener('message', (event)=>{
+    if(event.data != ''){
+        // alert(event.data);
+        if(event.data === 'mainBtnClicked'){
+            centerSolar();
+            isMousePress = false;
+            setTimeout(()=>{
+                newCoordinates();
+            }, 1000); // 1000ms = 1s
+        }
+    }
+})
+
+function centerSolar(){
+    solarS.style.transition = 'left 1s ease, top 1s ease';
+    solarS.style.left = '50%';
+    solarS.style.top = '50%';
+}
+
+function newCoordinates(){
+    solarS.style.transition = '';
+    rect = solarS.getBoundingClientRect();
+    x = rect.x;
+    y = rect.y-30;
+}

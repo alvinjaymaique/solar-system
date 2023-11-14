@@ -5,6 +5,8 @@ const closeInfo = document.querySelector('.close-info');
 const textSolar = document.querySelector('.text-solar');
 const textSystem = document.querySelector('.text-system');
 const section = document.getElementById('section1');
+const navi = document.getElementById('nav');
+
 window.addEventListener('message', function(event){ 
     if(event.data == 'screenTouched')
     {
@@ -141,3 +143,48 @@ function scrollToTop() {
     document.body.scrollTop = 0; // For older browsers
 }
 
+const frameSolar = document.getElementById('frameSolar');
+const mainBtn = document.querySelector('.mainBtn');
+var isNavOpen = true;
+mainBtn.addEventListener('click', ()=>{
+    //Transition
+    section.style.transition = 'grid-template-columns 1s, min-width 1s';
+    navi.style.transition = 'min-width 1s';
+    closeInfo.style.transition = 'min-width 1s';
+    frameSolar.style.pointerEvents = 'none';
+    if(isNavOpen)
+    {
+        //Change Style
+        section.style.gridTemplateColumns = '0px auto';
+        navi.style.minWidth = '0px';      
+        closeInfo.style.minWidth = '0px';      
+        setTimeout(()=>{
+            mainBtn.style.backgroundImage = "url(img/arrow_forward.svg)";
+        }, 1000)  
+    }
+    else{
+        //Change Style
+        section.style.gridTemplateColumns = '600px auto';
+        navi.style.minWidth = '600px';
+        closeInfo.style.minWidth = '25px';
+        setTimeout(()=>{
+            mainBtn.style.backgroundImage = "url(img/arrow_backward.svg)";
+        }, 1000)      
+    }
+    isNavOpen = !isNavOpen
+    frameSolar.contentWindow.postMessage('mainBtnClicked','*');
+    setTimeout(()=>{
+        frameSolar.style.pointerEvents = 'auto';
+    }, 1000)  
+})
+
+// section.addEventListener('click', ()=>{
+//     section.style.gridTemplateAreas = 
+//     '"head"'+
+//     '"main"'+
+//     '"main"';
+
+
+//     const solarS = window.open('solar-system.html', 'Child Window');
+//     solarS.postMessage('test', '*');
+// })

@@ -86,7 +86,10 @@ body{
 
 #section1 > nav{
     /* background-color: orange; */
+    position: relative;
+    overflow:hidden;
     grid-area: nav;
+    border-right: solid 2px gray;
     /* background-color: rgba(82, 82, 82, 1); */
     background: linear-gradient(to bottom, rgb(100, 100, 100), rgb(80, 80, 80), rgb(60, 60, 60));
     min-width: 600px;
@@ -97,11 +100,35 @@ body{
 #section1 > main{
     /* background-color: yellow; */
     grid-area: main;
+    position: relative;
+}
+
+.mainBtn{
+    background-image: url(img/arrow_backward.svg);
+    background-size: cover;
+    position: absolute;
+    height: 8vh;
+    width: 40px;
+    /* min-width: 50px; */
+    left: 0;
+    top: 50%;
+    margin-left: 2px;
+    background-color: white;
+    opacity: 0.5;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.mainBtn:hover{
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.7;
 }
 
 iframe{
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .close-info{
@@ -117,8 +144,8 @@ iframe{
     width: 25px;
     margin-top: 2px;
     margin-left: 2px;
-    top: 100px;
-
+    /* top: 100px; */
+    top: 0;
     display: none;
 }
 
@@ -138,7 +165,7 @@ iframe{
     box-shadow: white 0 0 10px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    top: 0;
+    bottom: 0;
     right: 0;
     z-index: 100;
     height: max-content;
@@ -147,6 +174,10 @@ iframe{
 
     user-select: none;
     /* display: none; */
+}
+
+#frameSolar{
+    user-select: none;
 }
 
 
@@ -170,9 +201,9 @@ iframe{
         font-family: 'Bebas Neue', sans-serif;
     }
 
-    #section1 > nav{
+    /* #section1 > nav{
         overflow-y: hidden;
-    }
+    } */
 
     .credits{
         position: relative;
@@ -191,4 +222,5 @@ iframe{
         user-select: none;
         /* display: none; */
     }
+   
 }

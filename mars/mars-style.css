@@ -34,6 +34,7 @@ body{
     grid-template-rows: 300px;
     margin: 0;
     padding: 0;
+    overflow-wrap:break-word;
 }
 
 .grid{
@@ -57,7 +58,7 @@ body{
     border-bottom-right-radius: 2%;
     border-bottom-left-radius: 2%;
     box-shadow: white 0px 5px 20px;
-    margin-right:15px;
+    margin-right:10px;
 }
 
 .grid-item3{   
@@ -92,4 +93,21 @@ a{
 
 a:active{
     color:blueviolet;
+}
+
+.references{
+    overflow-wrap:break-word;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: gray;
+}
+
+::-webkit-scrollbar-track{
+    background-color: rgba(255, 255, 255, 0.70);
 }
