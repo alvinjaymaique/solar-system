@@ -193,7 +193,7 @@ iframe{
         "head"
         "nav"
         "main";
-        grid-template-columns: auto;
+        grid-template-columns: 600px;
         grid-template-rows: 100px 100% 600px;
     }
 
