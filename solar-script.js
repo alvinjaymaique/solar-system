@@ -34,7 +34,7 @@ box.addEventListener('mousedown', function(e){
     isMousePress = true;   
     previousClientX = e.clientX;
     previousClientY = e.clientY;  
-    box.style.cursor = 'move';  
+    box.style.cursor = 'grabbing';  
 });
 
 box.addEventListener('mouseup', function(){
@@ -60,8 +60,7 @@ var x = rect.x, y = rect.y-50;
 solarS.style.left = x + 'px';
 solarS.style.top = y + 'px';
 const moveSpeed = 5;
-box.addEventListener('mousemove', function(e){
-    
+box.addEventListener('mousemove', function(e){  
     if(isMousePress)
     {    
         // document.title = e.clientX - previousClientX;
@@ -89,7 +88,7 @@ box.addEventListener('mousemove', function(e){
 //2 For dragging
 
 
-//2 top buttons
+//3 top buttons
 var isRunning = true;
 const playPause = document.querySelector('.playPause');
 btns.childNodes.forEach(function(btn){
@@ -129,10 +128,10 @@ btns.childNodes.forEach(function(btn){
         //for play or pause
     })
 })
-//2 top buttons
+//3 top buttons
 
 
-//3 Event Handler for planets and sun
+//4 Event Handler for planets and sun
 var frameInfoPath = "cover/cover.html";
 const frame = document.querySelector('.info1');
 const closeFrame = document.querySelector('.close-info');
@@ -148,26 +147,68 @@ planets.forEach(function(planet)
 sun.addEventListener("click", function(){
     window.parent.postMessage('sun', '*');
 })
-//3 Event Handler for planets and sun
+//4 Event Handler for planets and sun
 
 
-//4 When planets are hovered the orbit will stop
+//5 When planets are hovered the orbit will stop
+// Should output planet's name when hovered
+var planetName;
 planets.forEach((planet) => {
     planet.addEventListener('mouseenter', () => {
-        orbit.forEach((orbitPlanet) => {
-            orbitPlanet.style.animationPlayState = 'paused'; 
+        orbit.forEach((orbitPlanet) => {      
+            orbitPlanet.style.animationPlayState = 'paused';    
         })
+
+        if(!isMousePress){
+            createName(planet);
+        }
+        
     })
 
     planet.addEventListener('mouseleave', () => {
         orbit.forEach((orbitPlanet) => {
             if(isRunning){
                 orbitPlanet.style.animationPlayState = 'running';
+                
             }          
         })
+        delName();
     })
 })
-//4 When planets are hovered the orbit will stop
+
+sun.addEventListener('mouseenter', () =>{
+    if(!isMousePress){
+            createName(sun);
+        }
+})
+
+sun.addEventListener('mouseleave', () => {
+    delName();
+})
+
+//Function of creating div for name
+function createName(planet){
+    //get x and y coordinate
+    var rect = planet.getBoundingClientRect();
+    planetName = document.createElement('div');
+    planetName.classList = 'planet-name';
+    let name = planet.classList[1];
+    if(name != null){
+        planetName.innerHTML = planet.classList[1];
+    }
+    else{
+        planetName.innerHTML = 'SUN';
+    } 
+    planetName.style.top = parseInt(rect.y-100) + 'px';
+    planetName.style.left = parseInt(rect.x+30) + 'px';
+    box.appendChild(planetName);
+}
+
+function delName(){
+    planetName = document.querySelector('.planet-name');
+    box.removeChild(planetName);
+}
+//5 When planets are hovered the orbit will stop
 
 
 window.addEventListener('touchstart', ()=>{
@@ -209,3 +250,5 @@ function newCoordinates(){
     x = rect.x;
     y = rect.y-30;
 }
+
+// Output name of planet when hovered

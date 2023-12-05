@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'agencyFB';
+    src: url('/AgencyFB-Bold.ttf') ;
+}
+
 html, body{
     user-select: none;
     -webkit-user-drag: none;
@@ -335,4 +340,40 @@ html, body{
 
 #sun:active{
     transform:scale(1.7);
+}
+
+/* Pop up name of planets when hovered */
+.planet-name{
+    position: absolute;
+    font-family: agencyFB;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px black;
+    padding: 10px;
+    text-transform: capitalize;
+
+    /* background-color: rgba(128, 128, 128, 0.178); */
+    background-color: rgba(128, 128, 128, 0.897);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 0 8px white;
+    color: white;
+    z-index: 9999;
+
+    animation: p-name-zoom 0.3s ease-out 0s 1 forwards;
+    /* animation-name: p-name; */
+}
+
+@keyframes p-name-zoom{
+    0%{
+        transform: scaleX(0); 
+        opacity: 0;
+    }
+    100%{
+        transform: scaleX(1);
+        opacity: 1;
+    }
 }

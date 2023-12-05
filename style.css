@@ -181,6 +181,52 @@ iframe{
 }
 
 
+/* @media screen and (max-width: 840px) {
+    body{
+        overflow-y: visible;
+    }
+
+    #section1{
+        height: 100vh;
+        grid-template-areas:
+        "head head"
+        "nav main"
+        "nav main";
+        grid-template-columns: 600px auto;
+        grid-template-rows: 100px 1fr;
+    }
+
+    .title{
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .mainBtn{
+        border-left: solid 5px rgba(100, 100, 100, 0.7);
+        left: 0;
+        top: 50%;
+    }
+
+    .credits{
+        position: relative;
+        background-color: whitesmoke;
+        border-radius: 2px;
+        box-shadow: white 0 0 10px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        height: max-content;
+        width: max-content;
+        padding: 10px;
+    
+        user-select: none;
+        display: none; 
+    }
+   
+} */
+
+
 @media screen and (max-width: 600px) {
     body{
         overflow-y: visible;
